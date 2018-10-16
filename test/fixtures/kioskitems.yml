@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  path: MyString
+  cover_image: MyString
+  starttime: 
+  endtime: 
+  active: false
+
+two:
+  title: MyString
+  path: MyString
+  cover_image: MyString
+  starttime: 
+  endtime: 
+  active: false

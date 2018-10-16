@@ -1,0 +1,46 @@
+<%= form_for(youversion) do |f| %>
+  <% if youversion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(youversion.errors.count, "error") %> prohibited this youversion from being saved:</h2>
+
+      <ul>
+      <% youversion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Series Title</question>
+    <form-field>
+      <%= f.text_field :series, :class => "full-width-field" %>
+    </form-field>
+    
+  <question>Message Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+ <question>Activate<required-field /></question>
+  <form-field>
+  <%= f.datetime_select :start, :order => [:month, :day, :year],
+                                :startyear => Date.today.year,
+                                :startmonth => Date.today.month,
+                                :startday => Date.today.day,
+                                :starthour => Time.now.hour,
+                                :default => Time.parse('1am') + 1.week,
+                                :minute_step => 5,
+                                :ampm => true,
+                                :use_short_month => true
+                                %>
+  </form-field>
+
+  <question>YouVersion Event Number<required-field /></question>
+    <form-field>
+      <%= f.number_field :eventnumber, :class => "full-width-field" %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

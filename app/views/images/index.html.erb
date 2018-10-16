@@ -1,0 +1,13 @@
+<page-content>
+
+  <h1>Images <%= link_to "(+)", new_image_path if admin_signed_in? %></h1>
+
+  <image-bay>
+    <% @images.each do |img| %>
+      <image-bay-panel>
+        <%= link_to image_tag(img.image, :class => "image-bay-item"), image_path(img) %>
+      </image-bay-panel>
+    <% end %>
+  </image-bay> 
+   
+</page-content>

@@ -1,0 +1,21 @@
+Hello, <%= @contact.fname %>
+	We recieved your form and will get back with you shortly.
+
+---
+
+Name: <%= @contact.fname + " " + @contact.lname %>
+Email: <%= @contact.email %>
+Phone: <%= @contact.phone %>
+
+Do you attend VC2? <% if @contact.attendance == true %>Yes<% else %>No<% end %>
+Do you attend VC2 Grow Group? <% if @contact.growgroup == true %>Yes<% else %>No<% end %>
+<% if @contact.growgroupleader.present? %>
+  Name of Grow Group Leader(s): <%= @contact.growgroupleader %>
+<% end %>
+Do you serve on a VC2 Dream Team? <% if @contact.attendance == true %>Yes<% else %>No<% end %><br /><br />
+<% if @contact.dreamteam.present? %>
+  Name of Dream Team Leader(s): <%= @contact.dreamteamleader %>
+<% end %>
+
+Please share the details of your request:
+  <%= @contact.details %>

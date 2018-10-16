@@ -1,0 +1,17 @@
+
+<page-content>
+    <page-title>VC2 Kiosk</page-title>
+    <hr />
+    <dashboard-block-list>
+        
+        <% @kioskitems.each do |k| %>
+          <%= link_to k.path do %>
+            <dashboard-block-item class="block-3 hover-text-block">
+              <%= image_tag k.cover_image if k.cover_image.present? %>
+              <text><%= k.title %></text>
+            </dashboard-block-item>
+          <% end %>
+        <% end %>
+        
+      </dashboard-block-list>
+</page-content>

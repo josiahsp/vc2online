@@ -1,0 +1,17 @@
+<div id="main">
+
+</div>
+<page-content>
+    <page-title><%= @submenu.title %></page-title>
+    
+    <dashboard-block-list>
+        <% @menuitems.each do |m| %>
+          <%= link_to m.path do %>
+            <dashboard-block-item class="block-3 text-block">
+                <%= image_tag("blank.jpg") %>
+              <text><%= m.title %></text>
+            </dashboard-block-item>
+          <% end %>
+        <% end %>
+      </dashboard-block-list>
+</page-content>

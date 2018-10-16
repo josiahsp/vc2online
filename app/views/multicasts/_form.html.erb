@@ -1,0 +1,101 @@
+<%= form_for(multicast, :multipart => true) do |f| %>
+  <% if multicast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(multicast.errors.count, "error") %> prohibited this multicast from being saved:</h2>
+
+      <ul>
+      <% multicast.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Presenter<required-field /></question>
+    <form-field>
+      <%= f.text_field :author, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Series</question>
+    <form-field>
+      <%= f.select :collection_id, @collections.collect { |collection| [collection.title, collection.id] },
+                                { selected: @multicast.collection_id,
+                                include_blank: true },
+                                { :class => "full-width-field" } %>
+    </form-field>
+
+  <question>Summary<required-field /></question>
+    <form-field>
+      <%= f.text_area :summary, :class => "full-width-area" %>
+    </form-field>
+    
+  <question>Audio File</question>
+    <form-field>
+      <%= f.file_field :audio %><br />
+      <%= f.hidden_field :audio_cache %><br />
+    </form-field>
+    
+  <question>Video File</question>
+    <form-field>
+      <%= f.file_field :video %><br />
+      <%= f.hidden_field :video_cache %><br />
+    </form-field>
+
+
+ <question>GUID</question>
+  <form-field>
+    <%= f.text_field :guid, :class => "full-width-field",
+                            :placeholder => "leave blank to have one generated"%>
+  </form-field>
+  
+  <question>Publishing Date<required-field /></question>
+    <form-field>
+      <%= f.datetime_select :pubdate, {:order => [:month, :day, :year, :hour, :minute],
+                                      :use_short_month => true,
+                                      :default => Time.now - 1.day,
+                                      :minute_step => 5}
+                                      %>
+    </form-field>
+
+  <question>Duration<required-field /></question>
+    <form-field>
+      <%= f.select :duration1, (0..5).to_a.map{|n| [n, n]},
+              { :include_blank => "hh",
+                :selected => @multicast.new_record? ? 00 : hours(@multicast.duration)} %>
+      <%= f.select :duration2, (0..59).to_a.map{|n| [n, n]},
+              { :include_blank => "mm",
+                  :selected => @multicast.new_record? ? 30 :minutes(@multicast.duration)}%>
+      <%= f.select :duration3, (0..59).to_a.map{|n| [n, n]},
+              { :include_blank => "ss",
+                  :selected => @multicast.new_record? ? 00 :seconds(@multicast.duration)} %>
+    </form-field>
+
+  <question>Keywords</question>
+    <form-field>
+      <%= f.text_area :keywords, :class => "full-width-area" %>
+      <span class="detail">Don&apos;t include presenter names or words found in the title/series.</detail>
+    </form-field>
+
+  <question>Cover Image (1920x1080)<required-field /></question>
+    <form-field>
+      <%= f.file_field :cover_image %><br />
+      <%= image_tag @multicast.cover_image, :class => "thumb" if @multicast.cover_image.present? %>
+      <%= f.hidden_field :cover_image_cache %><br />
+    </form-field>
+
+  <question>Hero Image (1280x550)<required-field /></question>
+    <form-field>
+      <%= f.file_field :hero_image %><br />
+      <%= image_tag @multicast.hero_image, :class => "thumb" if @multicast.hero_image.present? %>
+      <%= f.hidden_field :hero_image_cache %><br />
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

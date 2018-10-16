@@ -1,0 +1,38 @@
+<hero-image-section style="background-image: url('<%= @location.hero_image_url(:blur) %>');">
+  <%= image_tag @location.hero_image.main, :class => "hero-image" if @location.hero_image.main.present? %>
+</hero-image-section>
+
+<page-content>
+
+    <page-title><%= @location.title %></page-title>
+    <i><%= @location.leader %></i><br /><br />
+    
+    
+  <page-section-head>Location:</page-section-head>
+  <page-section-content>
+    <%= link_to (URI.encode("https://www.google.com/maps/search/?api=1&query=" + @location.address + " " + @location.address2 + " " + @location.city.titlecase + ", " + @location.state.upcase + " " + @location.zip + "&query_place_id=" + @location.googlemapsid)) do %>
+      <%= @location.building %><br />
+      <%= @location.address %><br />
+      <% if @location.address2.present? %><%= @location.address2 %><br /><% end %>
+      <%= @location.city %>,
+      <%= @location.state %>
+      <%= @location.zip %><br /><br />
+    <% end %>
+  </page-section-content>
+  
+  <page-section-head>Phone:</page-section-head>
+  <page-section-content><%= link_to phone_format(@location.phone), "tel:#{@location.phone}" %></page-section-content><br /><br />
+  
+  <page-section-head>Times:</page-section-head>
+  <page-section-content>
+    <% @meetings.each do |service| %>
+      <i><service-name><% thisservice = service[0][0] %><%= thisservice.title %></service-name></i><br />
+      <% thisservicemeetings = service[1] %>
+      <% meetings_grouped_by_weekday(thisservicemeetings).each do |s| %>
+        <%= s %><br />
+      <% end %>
+      <br />
+    <% end %>
+  </page-section-content>
+  
+</page-content>

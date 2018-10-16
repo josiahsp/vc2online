@@ -1,0 +1,38 @@
+<table style="width: 600px; align: center; padding: 50px; font-family: helvetica;">
+<tr><td>
+  <b>New Message from <%= @contact.fname %> <%= @contact.lname %></b><br /><br />
+
+  <p style="text-indent: 10px;">
+    <i><%= @contact.details %></i>
+  </p>
+  <p>
+  <b>Email:</b> <%= link_to @contact.email, "mailto:#{@contact.email}" %><br />
+  <b>Phone:</b> <%= @contact.phone %><br /><br />
+  </p>
+<br />
+  <hr style="width: 50px; float: left;"><br /><br />
+
+  <div style="line-height: 20px; font-size: 14px;">
+    <b>Name:</b><br/>
+       <%= @contact.fname + " " + @contact.lname %><br />
+    <b>Email:</b><br/>
+        <%= @contact.email %><br />
+    <b>Phone:</b><br/>
+        <%= @contact.phone %><br /><br />
+    <b>Do you attend VC2?</b><br/>
+        <% if @contact.attendance == true %>Yes<% else %>No<% end %><br /><br />
+    <b>Do you attend VC2 Grow Group?</b><br/>
+        <% if @contact.growgroup == true %>Yes<% else %>No<% end %><br />
+    <% if @contact.growgroupleader.present? %>
+      <b>Name of Grow Group Leader(s):</b><br/>
+          <%= @contact.growgroupleader %><br />
+    <% end %><br />
+    <b>Do you serve on a VC2 Dream Team?</b><br/>
+        <% if @contact.attendance == true %>Yes<% else %>No<% end %><br />
+    <% if @contact.dreamteam.present? %>
+      <b>Name of Dream Team Leader(s):</b><br/>
+          <%= @contact.dreamteamleader %><br /><br />
+    <% end %>
+    <b>Please share the details of your request:</b><br />
+    <%= @contact.details %><br />
+</td></tr></table>

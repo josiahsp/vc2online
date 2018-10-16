@@ -1,0 +1,369 @@
+<page-content>
+
+	<page-title>Admin Settings</page-title><br /><br />
+	<i>Jump to</i><br />
+	<%= link_to "Pages", "#pages" %><br />
+	<%= link_to "Messages", "#messages" %><br />
+	<%= link_to "Prayer Points", "#prayers" %><br />
+	<%= link_to "Events", "#events" %><br />
+	<%= link_to "Features", "#features" %><br />
+	<%= link_to "Campuses", "#campuses" %><br />
+	<%= link_to "Menu", "#menus" %><br />
+	<%= link_to "Links", "#quickitems" %><br />
+	<%= link_to "Kiosk", "#kiosk" %><br />
+	<%= link_to "YouVersions", "#youversions" %><br />
+<hr />
+	<div id="pages" class="admin-head">
+		<page-section-head>Pages</page-section-head>
+	</div>
+	<dashboard-block-list>
+		<% @pages.each do |p| %>
+			<%= link_to edit_page_path(p.id) do %>
+				<dashboard-block-item class="block-3 hover-text-block">
+					<%= image_tag(p.cover_image.present? ? p.cover_image : "blank.jpg") %>
+					<text><%= p.title %></text>
+				</dashboard-block-item>
+			<% end %>
+		<% end %>
+		<dashboard-block-item class="block-3">
+			<%= link_to image_tag("new_dashboard_item.jpg"), new_page_path %>
+		</dashboard-block-item>
+	</dashboard-block-list>
+
+<hr />
+
+
+	<div id="messages" class="admin-head messages">
+		<page-section-head>Messages</page-section-head>
+	</div>
+	<table class="dashboard-table">
+		<tr>
+			<th></th>
+			<th>Date</th>
+			<th>Name</th>
+		</tr>
+		<% @contacts.active.each do |c| %>
+			<tr>
+				<td><%= button_to "View", contact_path(c), :id => "small-button", method: :get %></td>
+				<td><%= c.created_at.strftime("%b %d, %Y - %I:%M%P") %></td>
+				<td><%= c.fname + " " + c.lname %></td>
+			</tr>
+		<% end %>
+	</table>
+
+	
+<hr />
+	
+	<span id="prayers"></span>
+	<div class="admin-head features">
+		<page-section-head>Prayer Points</page-section-head>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Active</th>
+				<th>Title</th>
+				<th>Details</th>
+				<th>Scriptures</th>
+				<th colspan=3></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @prayers.each do |p| %>
+				<tr>
+					<td><%= check_box_tag("active", 0, p.active, options = {onclick:"return false"} ) %></td>
+					<td><%= p.title %></td>
+					<td><%= p.details %></td>
+					<td><%= scriptures_list(p).to_sentence %></td>
+					<td><%= link_to 'Edit', edit_prayer_path(p) %></td>
+					<td><%= link_to 'Delete', {:controller => :prayers, :action => 'destroy', :id => p.id}, :method => :delete %></td>
+				</tr>
+			<% end %>
+			<tr/><tr>
+			<tr>
+				<td><i><%= link_to "New Prayer Point", new_prayer_path %></i></td>
+			</tr>
+		</tbody>
+	</table>
+
+<hr />
+
+	<div id="events" class="admin-head events">
+		<page-section-head>Events</page-section-head>
+	</div>
+	<dashboard-block-list>
+		<% @events.each do |e| %>
+			<%= link_to edit_event_path(e.id) do %>
+				<dashboard-block-item class="block-3 hover-text-block">
+					<% if e.cover_image.present? %>
+						<%= image_tag e.cover_image %>
+					<% end %>
+					<text><%= e.title %></text>
+				</dashboard-block-item>
+			<% end %>
+		<% end %>
+		
+		<dashboard-block-item class="block-3">
+			<%= link_to image_tag("new_dashboard_item.jpg"), new_event_path %>
+		</dashboard-block-item>
+	</dashboard-block-list>
+
+
+<hr />
+
+	<span id="features"></span>
+	<div class="admin-head features">
+		<page-section-head>Features</page-section-head>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Active</th>
+				<th>Event/Page</th>
+				<th>Starts</th>
+				<th>Expires</th>
+				<th>Caption</th>
+				<th>Priority Level</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @features.each do |feature| %>
+				<tr>
+					<td><%= check_box_tag("live", 0, feature.live, options = {onclick:"return false"} ) %></td>
+					<td>
+						<% if feature.event_id.present? %>
+							<%= feature.event.title %>
+						<% elsif feature.page_id.present? %>
+							<%= feature.page.title %>
+						<% end %>
+					</td>
+					<td><%= feature.start.strftime("%a, %b %e %Y %-l:%M%p") %></td>
+					<td><%= feature.endtime.strftime("%a, %b %e %Y %-l:%M%p") %></td>
+					<td><%= feature.caption %></td>
+					<td><%= feature.level %></td>
+					<td><%= link_to 'Show', feature %></td>
+					<td><%= link_to 'Edit', edit_feature_path(feature) %></td>
+					<td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+			<tr/><tr>
+			<tr>
+				<td></td>
+				<td colspan="2"><i><%= link_to "New Feature", new_feature_path %></i></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<hr />
+
+	<div id="campuses" class="admin-head events">
+		<page-section-head>Campuses</page-section-head>
+	</div>
+	<dashboard-block-list>
+		<% @locations.each do |l| %>
+			<%= link_to edit_location_path(l.slug) do %>
+				<dashboard-block-item class="block-3 hover-text-block">
+					<%= image_tag l.cover_image if l.cover_image.present? %>
+					<text><%= l.title %></text>
+				</dashboard-block-item>
+			<% end %>
+		<% end %>
+		
+		<dashboard-block-item class="block-3">
+			<%= link_to image_tag("new_dashboard_item.jpg"), new_location_path %>
+		</dashboard-block-item>
+	</dashboard-block-list>
+	
+	
+	
+	<hr />
+	
+	<span id="menus"></span>
+	<div class="admin-head features">
+		<page-section-head>Menus</page-section-head>
+	</div>
+	<table class="dashboard-table">
+		<thead>
+			<tr>
+				<th>Menu Category</th>
+				<th>Menu Item</th>
+				<th>Path</th>
+				<th>Main Menu</th>
+				<th colspan=3></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @submenus.each do |s| %>
+				<tr>
+					<td><%= s.title %></td>
+					<td></td>
+					<td></td>
+					<td><%= check_box_tag("main", 0, s.mainmenu, options = {onclick:"return false"} ) %></td>
+					<td><%= link_to 'Edit', edit_submenu_path(s) %></td>
+
+				</tr>
+				<% s.menuitems.each do |m| %>
+				<tr>
+					<td></td>
+					<td><%= m.title %></td>
+					<td><%= link_to m.path, m.path %></td>
+					<td><%= check_box_tag("main", 0, m.mainmenu, options = {onclick:"return false"} ) %></td>
+					<td><%= link_to 'Edit', edit_menuitem_path(m) %></td>
+				</tr>
+			<% end %>
+			<% end %>
+			<tr/><tr>
+			<tr>
+				<td><i><%= link_to "New Menu Category", new_submenu_path %></i></td>
+				<td><i><%= link_to "New Menu Item", new_menuitem_path %></i></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr />
+			
+			<span id="links"></span>
+			<div class="admin-head features">
+				<page-section-head>Links</page-section-head>
+			</div>
+			<table class="dashboard-table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Link</th>
+						<th>Destination</th>
+						<th colspan=2></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @links.each do |l| %>
+						<tr>
+							<td><%= l.title %></td>
+							<td>/<%= l.slug %></td>
+							<td><%= link_to l.destination, l.destination, :target => "_blank" %></td>
+							<td><%= link_to 'Edit', edit_link_path(l) %></td>
+						</tr>
+					<% end %>
+					<tr/><tr>
+					<tr>
+						<td><i><%= link_to "New Link", new_link_path %></i></td>
+					</tr>
+				</tbody>
+			</table>
+		
+
+	
+	<hr />
+	<div id="quickitems" class="admin-head events">
+		<page-section-head>Live Links</page-section-head>
+	</div>
+	<dashboard-block-list>
+		<% @quickitems.each do |q| %>
+			<%= link_to edit_quickitem_path(q.id) do %>
+				<dashboard-block-item class="block-3 hover-text-block">
+					<% if q.cover_image.present? %>
+						<%= image_tag q.cover_image %>
+					<% end %>
+					<text><%= q.title %></text>
+				</dashboard-block-item>
+			<% end %>
+		<% end %>
+		
+		<dashboard-block-item class="block-3">
+			<%= link_to image_tag("new_dashboard_item.jpg"), new_quickitem_path %>
+		</dashboard-block-item>
+	</dashboard-block-list>
+
+
+<hr />
+		
+		<span id="kiosk"></span>
+		<div class="admin-head features">
+			<page-section-head>Kiosk</page-section-head>
+		</div>
+		<table class="dashboard-table">
+			<thead>
+				<tr>
+					<th>Active</th>
+					<th>Title</th>
+					<th>Path</th>
+					<th>Start</th>
+					<th>End</th>
+					<th colspan=2></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @kioskitems.each do |k| %>
+					<tr>
+						<td><%= check_box_tag("main", 0, k.active, options = {onclick:"return false"} ) %></td>
+						<td><%= k.title %></td>
+						<td><%= link_to k.path, k.path %></td>
+						<td><%= k.starttime.strftime("%a, %h %d %Y - %l:%M%p") %></td>
+						<td><%= k.endtime.strftime("%a, %h %d %Y - %l:%M%p") %></td>
+						<td><%= link_to 'Edit', edit_kioskitem_path(k) %></td>
+					</tr>
+				<% end %>
+				<tr/><tr>
+				<tr>
+					<td><i><%= link_to "New Kiosk Item", new_kioskitem_path %></i></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+	<hr />
+		
+		<span id="youversions"></span>
+		<div class="admin-head features">
+			<page-section-head>YouVersion Redirects</page-section-head>
+		</div>
+		<table class="dashboard-table">
+			<thead>
+				<tr>
+					<th>Active</th>
+					<th>Series</th>
+					<th>Title</th>
+					<th>Start Date/Time</th>
+					<th>Event Number</th>
+					<th>Link</th>
+					<th colspan=2></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td><%= check_box_tag("active", 0, true, options = {onclick:"return false"} ) %></td>
+					<td><%= @youversion.series %></td>
+					<td><%= @youversion.title %></td>
+					<td><%= @youversion.start.strftime("%a, %h %d %Y - %l:%M%p") %></td>
+					<td><%= @youversion.eventnumber %></td>
+					<td><%= link_to "View", "https://www.bible.com/events/" + @youversion.eventnumber.to_s %></td>
+					<td><%= link_to 'Edit', edit_youversion_path(@youversion) %></td>
+				</tr>
+				
+				<% @youversions.each do |y| %>
+					<tr>
+						<td></td>
+						<td><%= y.series %></td>
+						<td><%= y.title %></td>
+						<td><%= y.start.strftime("%a, %h %d %Y - %l:%M%p") %></td>
+						<td><%= y.eventnumber %></td>
+						<td><%= link_to "View", "https://www.bible.com/events/" + y.eventnumber.to_s %></td>
+						<td><%= link_to 'Edit', edit_youversion_path(y) %></td>
+					</tr>
+				<% end %>
+				<tr/><tr>
+				<tr>
+					<td><i><%= link_to "New YouVersion Redirect", new_youversion_path %></i></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</page-content>

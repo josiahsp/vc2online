@@ -1,0 +1,19 @@
+<page-content>
+
+  <page-title>Message Series</page-title>
+  
+  
+  <event-image-list>
+    <% @collections.active.chronological.each do |series| %>
+      <%= link_to collection_path(series.id) do %>
+        <event-item class="block-3">
+          <%= image_tag series.artwork %>
+        </event-item>
+      <% end %>
+    <% end %>
+  </event-image-list>
+  
+  
+  <%= render "multicasts/featured" %>
+  
+ </page-content>

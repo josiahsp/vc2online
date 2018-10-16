@@ -1,0 +1,68 @@
+<%= form_for(page) do |f| %>
+  <% if page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field", :placeholder => "Title" %>
+    </form-field>
+
+  <question>Keywords<required-field /></question>
+    <form-field>
+      <%= f.text_field :keywords, :class=> "full-width-field", :placeholder => "Separate keywords by commas (,)" %><br /><br />
+    </form-field>
+    
+  <question>Content<required-field /></question>
+    <form-field>
+      <%= f.text_area :content, :class=> "full-width-area tall-area", :placeholder => "Page content" %>
+      <br /><span class="detail">&#94;Use <%= link_to "Markup Language", "https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet", :target => "_blank" %> for formatting</span>
+    </form-field>
+    
+    
+  <question>Slug<required-field /></question>
+    <form-field>
+      <%= f.text_field :slug, :class => "full-width-field", :placeholder => "Link name after \"pages/\""%>
+    </form-field>
+    
+  <hr />
+  <question>Hero Image (1280x550)</question>
+    <form-field>
+      <%= f.file_field :hero_image %><br />
+      <%= image_tag @page.hero_image, :class => "thumb" if @page.hero_image.present? %>
+      <%= f.hidden_field :hero_image_cache %><br />
+    </form-field>
+    
+    <question>Hero Square Image (1080x1080)</question>
+    <form-field>
+      <%= f.file_field :hero_square_image %><br />
+      <%= image_tag @page.hero_square_image, :class => "thumb" if @page.hero_square_image.present? %>
+      <%= f.hidden_field :hero_square_image_cache %><br />
+    </form-field>
+      
+    <question>Cover Image (1280x810)</question>
+    <form-field>
+      <%= f.file_field :cover_image %><br />
+      <%= image_tag @page.cover_image, :class => "thumb" if @page.cover_image.present? %>
+      <%= f.hidden_field :cover_image_cache %><br />
+    </form-field>
+      
+    <question>Thumbnail Image (104x104)</question>
+    <form-field>
+      <%= f.file_field :thumbnail_image %><br />
+      <%= image_tag @page.thumbnail_image, :class => "thumb" if @page.thumbnail_image.present? %>
+      <%= f.hidden_field :thumbnail_image_cache %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

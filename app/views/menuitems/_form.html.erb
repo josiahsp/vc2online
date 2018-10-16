@@ -1,0 +1,40 @@
+<%= form_for(menuitem) do |f| %>
+  <% if menuitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(menuitem.errors.count, "error") %> prohibited this menuitem from being saved:</h2>
+
+      <ul>
+      <% menuitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Submenu<required-field /></question>
+    <form-field>
+      <%= f.select :submenu_id, @submenus.collect { |submenu| [submenu.title, submenu.id] },
+                                { },
+                                { :class => "full-width-field" }
+                                %>
+    </form-field>
+
+  <question>Title</question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Link Path</question>
+    <form-field>
+      <%= f.text_field :path, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Include in Main Menu</question>
+    <form-field>
+      <%= f.check_box :mainmenu, :class => "full-width-field" %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit "Submit Menu Item" %>
+  </div>
+<% end %>

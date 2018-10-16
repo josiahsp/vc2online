@@ -1,0 +1,15 @@
+<page-content>
+
+  <%= image_tag @image.image, :id => "image-show-image" %>
+  
+  <h2><%= @image.title %></h2>
+
+  <% if @image.caption %>
+    <p>
+      <%= @image.caption %>
+    </p>
+  <% end %>
+
+  <i>Image address: http://www.vc2online.com<%= @image.image.url %></i>
+
+</page-content>

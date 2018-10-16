@@ -1,0 +1,94 @@
+<%= form_for(location) do |f| %>
+  <% if location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Building Name<required-field /></question>
+    <form-field>
+      <%= f.text_field :building, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Address<required-field /></question>
+    <form-field>
+      <%= f.text_field :address, :class => "full-width-field", :placeholder => "Line 1" %>
+      <%= f.text_field :address2, :class => "full-width-field", :placeholder => "Line 2" %>
+    </form-field>
+
+  <question>City, State &amp; Zip<required-field /></question>
+    <form-field>
+      <%= f.text_field :city, :class => "third-width-field", :placeholder => "City" %>
+      <%= f.text_field :state, :class => "third-width-field", :placeholder => "State" %>
+      <%= f.text_field :zip, :class => "third-width-field", :placeholder => "Zip" %>
+    </form-field>
+  
+  <question>Google Maps ID<required-field /></question>
+    <form-field>
+      <%= f.text_field :googlemapsid, :class => "full-width-field", :placeholder => "Found at developers.google.com/places/place-id" %>
+    </form-field>
+
+  <question>Phone<required-field /></question>
+    <form-field>
+      <%= f.text_field :phone, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Leaders<required-field /></question>
+    <form-field>
+      <%= f.text_field :leader, :class => "full-width-field" %>
+    </form-field>
+  </div>
+  
+  <question>Slug<required-field /></question>
+    <form-field>
+      <%= f.text_field :slug, :class => "full-width-field", :placeholder => "Link name after \"locations/\"" %>
+    </form-field>
+  </div>  
+  
+  <hr />
+  <question>Hero Image (1280x550)</question>
+    <form-field>
+      <%= f.file_field :hero_image %><br />
+      <%= image_tag @location.hero_image, :class => "thumb" if @location.hero_image.present? %>
+      <%= f.hidden_field :hero_image_cache %><br />
+    </form-field>
+    
+    <question>Hero Square Image (1080x1080)</question>
+    <form-field>
+      <%= f.file_field :hero_square_image %><br />
+      <%= image_tag @location.hero_square_image, :class => "thumb" if @location.hero_square_image.present? %>
+      <%= f.hidden_field :hero_square_image_cache %><br />
+    </form-field>
+      
+    <question>Cover Image (1280x810)</question>
+    <form-field>
+      <%= f.file_field :cover_image %><br />
+      <%= image_tag @location.cover_image, :class => "thumb" if @location.cover_image.present? %>
+      <%= f.hidden_field :cover_image_cache %><br />
+    </form-field>
+      
+    <question>Thumbnail Image (104x104)</question>
+    <form-field>
+      <%= f.file_field :thumbnail_image %><br />
+      <%= image_tag @location.thumbnail_image, :class => "thumb" if @location.thumbnail_image.present? %>
+      <%= f.hidden_field :thumbnail_image_cache %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+    <%= button_to "Modify meeting times", meetings_path, :params => {:location => location.id }, :class => "secondary-button", method: :get %>

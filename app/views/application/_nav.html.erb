@@ -1,0 +1,41 @@
+<<<<<<< HEAD
+<header class=".invisible">
+  <span id="logo"><%= link_to "VC2", root_path %></span>
+  <%= link_to "Menu", "javascript:void(0);", :id => "navbutton" %>
+
+<!-- NAVIGATION MENU -->
+
+  <nav id="navmenu">
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <% @mainmenuitems.each do |m| %>
+        <li>
+          <% if m.is_a? Menuitem %><%= link_to m.title, m.path %>
+          <% elsif m.is_a? Submenu %><%= link_to m.title, submenu_path(m) %><% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+</header>
+=======
+<header>
+  <span id="logo">VC2</span>
+  <button id="navbutton">Menu</button>
+</header>
+
+
+<!-- NAVIGATION MENU -->
+
+
+<nav id="navmenu">
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Watch Online", "http://www.youtube.com/vc2online" %></li>
+    <li><%= link_to "About", "http://www.vc2online.com/imnew.html" %></li>
+    <li><%= link_to "Contact", "http://www.facebook.com/vc2online" %></li>
+    <li><%= link_to "Resources", "http://www.facebook.com/vc2online" %></li>
+    <li><%= link_to "Give", "http://give.vc2online.com" %></li>
+  </ul>
+</nav>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414

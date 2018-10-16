@@ -1,0 +1,32 @@
+<p>
+  <strong>Title:</strong>
+  <%= @kioskitem.title %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @kioskitem.path %>
+</p>
+
+<p>
+  <strong>Cover image:</strong>
+  <%= @kioskitem.cover_image %>
+</p>
+
+<p>
+  <strong>Starttime:</strong>
+  <%= @kioskitem.starttime %>
+</p>
+
+<p>
+  <strong>Endtime:</strong>
+  <%= @kioskitem.endtime %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @kioskitem.active %>
+</p>
+
+<%= link_to 'Edit', edit_kioskitem_path(@kioskitem) %> |
+<%= link_to 'Back', kioskitems_path %>

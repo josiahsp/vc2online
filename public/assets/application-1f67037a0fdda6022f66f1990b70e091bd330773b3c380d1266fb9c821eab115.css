@@ -1,0 +1,515 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+/*
+
+
+*/
+
+
+Directory structure:
++--- assets/
+|   +--- stylesheets/
+|       +--- /application.css
+|       +--- /main.scss
+|           +--- base/
+|               +--- /mixins.scss
+|               +--- /globals.scss
+|               +--- /normalize.scss
+|           +--- styles/
+|               +--- /pages.scss
+|               +--- /events.scss
+/* line 6, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: helvetica;
+  background-color: #fcfcfc;
+}
+/* line 13, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+body a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+/* line 19, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+header {
+  position: fixed;
+  display: block;
+  background-color: #fcfcfc;
+  height: 70px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 0px;
+  padding: 5px;
+  line-height: 65px;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+/* line 36, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+header #logo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* line 42, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#navbutton {
+  z-index: 205;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 5.5833333333%;
+  margin-left: 0%;
+  margin-right: 3%;
+  vertical-align: middle;
+  position: absolute;
+  right: 20px;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+#navbutton::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 54, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+#navbutton:last-child {
+  margin-right: 0%;
+}
+
+/* line 50, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+.visible {
+  visibility: visible;
+}
+
+/* line 54, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+nav {
+  visibility: hidden;
+  position: fixed;
+  z-index: 100;
+  margin: 0px;
+  top: 0px;
+  background-color: #404040;
+  color: #fff;
+  text-align: center;
+  height: 80vh;
+  width: 100%;
+  padding: 10vh 0vh 10vh 0vh;
+}
+/* line 67, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+nav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  height: 50%;
+  vertical-align: middle;
+}
+/* line 74, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+nav ul li {
+  font-size: 2.5em;
+  padding: 0px;
+  margin: 20px 0px 20px 0px;
+}
+/* line 81, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+nav a {
+  color: #bbb;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .5s;
+}
+/* line 86, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+nav a:hover {
+  color: #f55;
+  transition: all .5s;
+}
+
+/* line 94, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features {
+  width: 100%;
+  background-color: #fcfcfc;
+  margin: 0px;
+  padding: 20px;
+  padding: 0px 0px 50px 0px;
+  font-size: .9em;
+  color: #555;
+  z-index: 5;
+}
+/* line 104, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features a {
+  color: inherit;
+}
+/* line 108, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features container {
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  position: relative;
+  top: -20px;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+#features container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 115, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box {
+  border-radius: 10px;
+  padding: 0px;
+  box-shadow: 3px 3px 5px rgba(170, 170, 170, 0.4);
+  -webkit-box-shadow: 3px 3px 5px rgba(170, 170, 170, 0.4);
+  max-height: 120px;
+  overflow: hidden;
+  background-color: #fcfcfc;
+  transition: all .5s;
+  display: inline-block;
+}
+/* line 126, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box .thumbnail {
+  height: 104px;
+  width: 104px;
+  float: left;
+  margin: 8px;
+}
+/* line 133, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box .content {
+  padding: 10px;
+  display: block;
+  text-align: left;
+}
+/* line 138, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box .content feat-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+/* line 143, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box .content date {
+  font-style: italic;
+  font-size: .9em;
+}
+/* line 149, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#features .feature-box:hover {
+  transition: all .5s;
+  box-shadow: 1px 1px 5px 2px rgba(255, 85, 85, 0.8);
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(255, 85, 85, 0.8);
+}
+
+/* line 158, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+.block-3 {
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 30.2604166667%;
+  margin-left: 2.1458333333%;
+  margin-right: 3%;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+.block-3::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 54, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+.block-3:last-child {
+  margin-right: 0%;
+}
+
+/* line 162, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+vision-statement {
+  width: auto;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-style: italic;
+  margin: 60px 0px 30px 0px;
+  text-transform: uppercase;
+  color: #777;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+vision-statement::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 173, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#main {
+  width: 100%;
+  min-height: 500px;
+  background-image: url("main-temp.jpg");
+  background-size: cover;
+}
+
+/* line 181, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations {
+  width: 100%;
+  background-color: #777;
+  color: #ddd;
+  margin: 0px;
+}
+/* line 187, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container {
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  padding: 20px;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+#locations container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 192, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container ul {
+  list-style-position: inside;
+  padding-left: 0px;
+}
+/* line 197, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container h1 {
+  color: #555;
+}
+/* line 201, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container name {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  -webkit-text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+/* line 208, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container address {
+  color: #fff;
+}
+/* line 212, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+#locations container service-name {
+  color: #f55;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  -webkit-text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* line 222, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer {
+  display: block;
+  width: 100%;
+  background-color: #777;
+  color: #fff;
+  padding: 20px;
+}
+/* line 231, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer container ul {
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  list-style: none;
+  padding-left: none;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+footer container ul::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 236, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer container ul li.tier1 {
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 22.75%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+footer container ul li.tier1::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 54, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+footer container ul li.tier1:last-child {
+  margin-right: 0%;
+}
+/* line 239, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer container ul li.tier1 group-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #f55;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  padding: 3px;
+}
+/* line 247, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer container ul li.tier1 ul {
+  padding-left: 10px;
+}
+/* line 253, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+footer container copyright {
+  width: auto;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: .8em;
+  color: #555;
+  text-align: center;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+footer container copyright::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 263, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+event-image-list {
+  width: auto;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  padding: 20px 20px 0px 20px;
+  margin-bottom: 0px;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+event-image-list::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 268, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+event-image-list event-item {
+  margin-bottom: 20px;
+}
+/* line 271, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+event-image-list event-item img {
+  width: 100%;
+}
+
+/* line 277, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+.feature-image {
+  margin-top: 80px;
+  width: 100%;
+}
+
+/* line 282, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+page-content {
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+page-content::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 285, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+page-content p {
+  width: auto;
+  max-width: 900px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 1.3em;
+  text-indent: 20px;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+page-content p::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 291, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+page-content event-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+page-content event-title::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 298, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+page-content event-subtitle {
+  width: auto;
+  max-width: 1240px;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 1.5em;
+  font-style: italic;
+  text-align: center;
+}
+/* line 288, /Volumes/NO NAME/vc2online/app/assets/stylesheets/jeet/scss/_grid.scss */
+page-content event-subtitle::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 305, /Volumes/NO NAME/vc2online/app/assets/stylesheets/base/globals.scss */
+page-content event-section-head {
+  font-size: 1.3em;
+  font-style: italic;
+}

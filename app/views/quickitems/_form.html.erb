@@ -1,0 +1,39 @@
+<%= form_for(quickitem) do |f| %>
+  <% if quickitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quickitem.errors.count, "error") %> prohibited this quickitem from being saved:</h2>
+
+      <ul>
+      <% quickitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+    
+  <question>Link Path<required-field /></question>
+    <form-field>
+      <%= f.text_field :path, :class => "full-width-field" %>
+    </form-field>
+    
+  <question>Order<required-field /></question>
+    <form-field>
+      <%= f.number_field :order, :class => "full-width-field" %>
+    </form-field>
+    
+    <question>Cover Image (1280x810)<required-field /></question>
+    <form-field>
+      <%= f.file_field :cover_image %><br />
+      <%= image_tag @quickitem.cover_image, :class => "thumb" if @quickitem.cover_image.present? %>
+      <%= f.hidden_field :cover_image_cache %><br />
+    </form-field>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<hero-image-section style="background-image: url('<%= @collection.hero_image_url(:blur) %>');">
+  <%= image_tag @collection.hero_image.main, :class => "hero-image" if @collection.hero_image.main.present? %>
+</hero-image-section>
+
+<page-content>
+
+  <%= link_to "View All Series", collections_path, :id => "back_link" %>
+
+  <page-title><%= @collection.title %></page-title>
+  
+  <p>
+    <% if (@collection.startdate.month == @collection.enddate.month) && (@collection.startdate.year == @collection.enddate.year) %>
+      <i><%= @collection.enddate.strftime("%B %Y") %></i>
+      
+    <% elsif (@collection.startdate.month != @collection.enddate.month) && (@collection.startdate.year == @collection.enddate.year) %>
+      <i><%= @collection.startdate.strftime("%b") %>-<%= @collection.enddate.strftime("%b %Y") %></i>
+      
+    <% else %>
+      <%= @collection.startdate.strftime("%b %Y") %>-<%= @collection.enddate.strftime("%b %Y") %>
+    <% end %>
+  </p>
+  
+  <p>
+    <%= @collection.description %>
+  </p>
+  
+  <event-image-list>
+    <% @collection.multicasts.each do |m| %>
+      <%= link_to multicast_path(m.id) do %>
+        <event-item class="block-3">
+          <%= image_tag m.cover_image %>
+        </event-item>
+      <% end %>
+    <% end %>
+  </event-image-list>
+
+</page-content>

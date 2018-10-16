@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  subtitle: MyString
+  synopsis: MyText
+  content: MyText
+  location: 
+  location_building: MyString
+  location_address: MyString
+  location_address2: MyString
+  location_city: MyString
+  location_state: MyString
+  location_zip: MyString
+  location_googlemapsid: MyString
+  start: 2017-12-27 15:16:29
+  end: 2017-12-27 15:16:29
+  videos: 
+  images: 
+  links: 
+  price: 1.5
+
+two:
+  title: MyString
+  subtitle: MyString
+  synopsis: MyText
+  content: MyText
+  location: 
+  location_building: MyString
+  location_address: MyString
+  location_address2: MyString
+  location_city: MyString
+  location_state: MyString
+  location_zip: MyString
+  location_googlemapsid: MyString
+  start: 2017-12-27 15:16:29
+  end: 2017-12-27 15:16:29
+  videos: 
+  images: 
+  links: 
+  price: 1.5

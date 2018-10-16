@@ -1,0 +1,60 @@
+<%= form_for(contact) do |f| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(contact.errors.count, "error") %> prohibited this form from sending:</h3>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Name<required-field /></question>
+    <form-field>
+      <%= f.text_field :fname, :class => "half-width-field", :placeholder => "First", :disabled => true %>
+      <%= f.text_field :lname, :class => "half-width-field", :placeholder => "Last", :disabled => true %>
+    </form-field>
+    
+
+  <question>Email<required-field /></question>
+    <form-field>
+      <%= f.text_field :email, :class => "full-width-field", :disabled => true %>
+    </form-field>
+
+  <question>Phone<required-field /></question>
+    <form-field>
+      <%= f.text_field :phone, :class => "full-width-field", :placeholder => "###-###-####", :disabled => true %>
+    </form-field>
+
+  <question>Do you attend VC2?<required-field /></question>
+    <form-field>
+      <%= f.radio_button :attendance, true, :disabled => true %> Yes &nbsp;&nbsp;&nbsp; <%= f.radio_button :attendance, false, :disabled => true %> No
+    </form-field>
+    
+  <question>Do you attend a VC2 Grow Group?<required-field /></question>
+    <form-field>
+      <%= f.radio_button :growgroup, true, :disabled => true %> Yes &nbsp;&nbsp;&nbsp; <%= f.radio_button :growgroup, false, :disabled => true %> No
+    </form-field>
+    
+  <question>Name of Grow Group Leader(s)</question>
+    <form-field>
+      <%= f.text_field :growgroupleader, :class => "full-width-field", :disabled => true %>
+    </form-field>
+
+  <question>Do you serve on a VC2 Dream Team?<required-field /></question>
+    <form-field>
+      <%= f.radio_button :dreamteam, true, :disabled => true %> Yes &nbsp;&nbsp;&nbsp; <%= f.radio_button :dreamteam, false, :disabled => true %> No
+    </form-field>
+
+  <question>Name of Dream Team Leader(s)</question>
+    <form-field>
+      <%= f.text_field :dreamteamleader, :class => "full-width-field", :disabled => true %>
+    </form-field>
+
+  <question>Please share the details of your request<required-field /></question
+    <form-field>
+      <%= f.text_area :details, :class=> "full-width-area", :disabled => true %>
+    </form-field>
+<% end %>

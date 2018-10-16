@@ -1,0 +1,57 @@
+<%= form_for(meeting) do |f| %>
+  <% if meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Location</question>
+    <form-field>
+      <%= f.select :location_id, @locations.collect { |location| [location.title, location.id] },
+                                { selected: meeting.location },
+                                { :class => "full-width-field" } %>
+    </form-field>
+  
+  <question>Service</question>
+    <form-field>
+      <%= f.select :service_id, @services.collect { |service| [service.title, service.id] },
+                                { selected: meeting.service_id },
+                                { :class => "full-width-field" } %>
+    </form-field>
+  
+  <question>Weekday</question>
+    <form-field>
+      <%= f.select :weekday, [['Sunday', 0],
+                              ['Monday', 1],
+                              ['Tuesday', 2],
+                              ['Wednesday', 3],
+                              ['Thursday', 4],
+                              ['Friday', 5],
+                              ['Saturday', 6]],
+                              { },
+                              { :class => "half-width-field" } %>
+    </form-field>
+  
+  <question>Time</question>
+    <form-field>
+      <%= f.time_select :time, { minute_step: 5,
+                              ampm: true } %>
+    </form-field>
+
+  <question>Display in Locations Partial?</question>
+    <form-field>
+      <%= f.radio_button :level, 1 %> Yes<br />
+      <%= f.radio_button :level, 0 %> No
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

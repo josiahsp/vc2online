@@ -1,0 +1,50 @@
+<<<<<<< HEAD
+=======
+<p id="notice"><%= notice %></p>
+
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+<h1>Features</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Active</th>
+      <th>Event/Page</th>
+      <th>Starts</th>
+      <th>Expires</th>
+      <th>Caption</th>
+      <th>Priority Level</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @features.each do |feature| %>
+      <tr>
+        <td><%= check_box_tag("live", 0, feature.live, options = {onclick:"return false"} ) %></td>
+        <td>
+          <% if feature.event_id.present? %>
+            <%= feature.event.title %>
+          <% elsif feature.page_id.present? %>
+<<<<<<< HEAD
+            <%= feature.page.title %>
+=======
+            <%= feature.event.title %>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+          <% end %>
+        </td>
+        <td><%= feature.start.strftime("%a, %b %e %Y %-l:%M%p") %></td>
+        <td><%= feature.endtime.strftime("%a, %b %e %Y %-l:%M%p") %></td>
+        <td><%= feature.caption %></td>
+        <td><%= feature.level %></td>
+        <td><%= link_to 'Show', feature %></td>
+        <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
+        <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature', new_feature_path %>

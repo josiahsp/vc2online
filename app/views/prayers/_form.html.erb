@@ -1,0 +1,49 @@
+<%= form_for(prayer, multipart: true) do |f| %>
+	<% if prayer.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(event.errors.count, "error") %> prohibited this prayer point from being saved:</h2>
+
+			<ul>
+			<% prayer.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<question>Title<required-field /></question>
+		<form-field>
+			<%= f.text_field :title, :class => "full-width-field" %>
+		</form-field>
+
+	<question>Details<required-field /></question>
+		<form-field>
+			<%= f.text_area :details, :class => "full-width-area" %><br />
+			<span class="detail">&#94;Use <%= link_to "Markup Language", "https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet", :target => "_blank" %> for formatting</span>
+		</form-field>
+		
+	<question>Scripture 1<required-field /></question>
+		<form-field>
+			<%= f.text_field :scripture_1, :class => "full-width-field" %><br />
+		</form-field>
+		
+	<question>Scripture 2</question>
+		<form-field>
+			<%= f.text_field :scripture_2, :class => "full-width-field" %><br />
+		</form-field>
+		
+	<question>Scripture 3</question>
+		<form-field>
+			<%= f.text_field :scripture_3, :class => "full-width-field" %><br />
+		</form-field>
+		
+	<question>Active Status</question>
+		<form-field>
+			<%= f.check_box :active %>
+		</form-field>
+		
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

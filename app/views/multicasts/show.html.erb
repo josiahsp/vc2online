@@ -1,0 +1,25 @@
+<hero-image-section style="background-image: url('<%= @multicast.hero_image_url(:blur) %>');">
+  <%= image_tag @multicast.hero_image.main, :class => "hero-image" if @multicast.hero_image.main.present? %>
+</hero-image-section>
+
+<page-content>
+  <page-title><%= @multicast.title %></page-title><br />
+  <% if @multicast.collection.present? %><page-subtitle><%= link_to @multicast.collection.title, collection_path(@multicast.collection) %></page-subtitle><br /><% end %>
+  
+  <p>
+    <i><%= hours(@multicast.duration) == 0 ? "" : "#{hours(@multicast.duration)}h " %><%= minutes(@multicast.duration) == 0 ? "" : "#{minutes(@multicast.duration)}m " %><%= seconds(@multicast.duration) %>s</i>
+  </p>
+  
+  <p>
+    <%= @multicast.summary %>
+  </p>
+  <p>
+    <i><%= @multicast.pubdate.strftime("%A, %B %e, %Y") %></i><br />
+  </p><br />
+  
+  <% if @multicast.collection.present? %>
+    <%= render "multicasts/others_in_collection" %>
+  <% end %>
+  <%= render "multicasts/featured" %>
+  
+</page-content>

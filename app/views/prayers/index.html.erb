@@ -1,0 +1,18 @@
+<page-content>
+
+	<page-title>Prayer Points</page-title>
+	<br />
+	<% @prayers.each do |p| %>
+		<h2><%= p.title %></h2>
+		
+		<p><%= p.details %></p>
+		
+		<% if p.scripture_1.present? %><p><b><%= p.scripture_1 %></b> - <i><%= scripture_lookup(p.scripture_1) %></i></p><% end %>
+		<% if p.scripture_2.present? %><p><b><%= p.scripture_2 %></b> - <i><%= scripture_lookup(p.scripture_2) %></i></p><% end %>
+		<% if p.scripture_3.present? %><p><b><%= p.scripture_3 %></b> - <i><%= scripture_lookup(p.scripture_3) %></i></p><% end %>
+		<br /><br />
+		<hr />
+		
+	<% end %>
+	
+</page-content>

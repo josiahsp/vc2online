@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  phone: MyString
+  attendance: false
+  growgroup: false
+  growgroupleader: MyString
+  dreamteam: false
+  dreamteamleader: MyString
+  details: MyText
+
+two:
+  fname: MyString
+  lname: MyString
+  email: MyString
+  phone: MyString
+  attendance: false
+  growgroup: false
+  growgroupleader: MyString
+  dreamteam: false
+  dreamteamleader: MyString
+  details: MyText

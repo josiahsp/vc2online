@@ -1,0 +1,13 @@
+<hr />
+<page-section-head>Recent Messages</page-section-head>
+<page-section-content>
+  <event-image-list>
+    <% @multicasts.chronological.limit(3).each do |m| %>
+      <%= link_to multicast_path(m.id) do %>
+        <event-item class="block-3">
+          <%= image_tag m.cover_image %>
+        </event-item>
+      <% end %>
+    <% end %>
+  </event-image-list>
+</page-section-content>

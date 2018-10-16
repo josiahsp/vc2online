@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+<div id="locations">
+  <container>
+    <h1>This Weekend</h1>
+    <ul>
+      <% @locations.each do |l| %>
+        <div>
+        <name><%= link_to l.title, location_path(l) %></name>
+          <%= link_to (URI.encode("https://www.google.com/maps/search/?api=1&query=" + l.address + " " + l.address2 + " " + l.city.titlecase + ", " + l.state.upcase + " " + l.zip + "&query_place_id=" + l.googlemapsid)) do %>
+            <address><% if l.building != "" %><%= l.building %><br /><% end %>
+            <%= l.address.titlecase %><br />
+              <% if l.address2 != "" %><%= l.address2 %><br /><% end %>
+              <%= l.city.titlecase + ", " + l.state.upcase + " " + l.zip %><br />
+        <% end %></address>
+        <br />
+          <% @sorted_meetings.each do |service| %>
+            <service-name><% thisservice = service[0][0] %><%= thisservice.title %></service-name><br />
+            <% thisservicemeetings = service[1] %>
+            <% meetings_grouped_by_weekday(thisservicemeetings).each do |s| %>
+              <%= s %><br />
+            <% end %>
+            <br />
+          <% end %>
+
+      
+        </div>
+      <% end %>
+    </ul>
+  </container>
+</div>
+=======
+<h1>This Weekend</h1>
+<ul>
+  <% @locations.each do |l| %>
+    <div>
+    <h2><%= l.title %></h2>
+    <% if l.building != "" %><%= l.building.titlecase %><br /><% end %>
+      <%= link_to (URI.encode("https://www.google.com/maps/search/?api=1&query=" + l.address + " " + l.address2 + " " + l.city.titlecase + ", " + l.state.upcase + " " + l.zip + "&query_place_id=" + l.googlemapsid)) do %>
+        <%= l.address.titlecase %><br />
+          <% if l.address2 != "" %><%= l.address2 %><br /><% end %>
+          <%= l.city.titlecase + ", " + l.state.upcase + " " + l.zip %><br />
+    <% end %>
+    </div>
+    <div>
+
+
+      <% @sorted_meetings.each do |service| %>
+        <h3><% thisservice = service[0][0] %><%= thisservice.title %></h3>
+        <% thisservicemeetings = service[1] %>
+        <% meetings_grouped_by_weekday(thisservicemeetings).each do |s| %>
+          <%= s %><br />
+        <% end %>
+      <% end %>
+
+  
+    </div>
+  <% end %>
+</ul>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414

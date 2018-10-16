@@ -1,0 +1,54 @@
+<h1>Events</h1>
+<<<<<<< HEAD
+<event-image-list>
+  <% @events.current.chronological.each do |e| %>
+    <%= link_to event_path(e.id) do %>
+      <event-item class="block-3">
+        <%= image_tag e.cover_image %>
+      </event-item>
+=======
+
+<div>
+    <% @events.each do |event| %>
+      <div>
+        <h2><%= event.title %></h2>
+        <% if event.subtitle %>
+          <i><%= event.subtitle %></i>
+        <% end %>
+        <p><i><%= event.synopsis %></i></p>
+        <p><%= event.content %></p>
+        <h4>Location</h4>
+        <% if event.location_id %>
+          <%= link_to event.location.title, location_path(event.location_id) %>
+        <% else %>
+        <%= link_to (URI.encode("https://www.google.com/maps/search/?api=1&query=" + event.location_address + " " + event.location_address2 + " " + event.location_city.titlecase + ", " + event.location_state.upcase + " " + event.location_zip + "&query_place_id=" + event.location_googlemapsid)) do %>
+          <b><%= event.location_building %></b><br />
+          <%= event.location_address %><br />
+          <% unless event.location_address2.blank? %>
+            <%= event.location_address2 %><br />
+          <% end %>
+          <%= event.location_city %>, <%= event.location_state %> <%= event.location_zip %><br />
+        <% end %>
+        <% end %>
+        <br /><br />
+        
+        <strong>When:</strong>
+        <%= event.start.strftime("%e %b %Y %H:%M%p") %>
+        <% if event.start != event.endtime && event.start.day == event.endtime.day %>
+        - <%= event.endtime.strftime("%H:%M%p") %>
+        <% elsif event.start != event.endtime && event.start.day != event.endtime.day %>
+        - <%= event.endtime.strftime("%e %b %Y %H:%M%p") %>
+        <% end %>
+        <br /><br />
+        
+        <% if event.price > 0 %>
+          <b>Cost:</b> <%= event.price %>/person
+        <% end %>
+        
+        <%= link_to 'Show', event %>
+        <%= link_to 'Edit', edit_event_path(event) %>
+        <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+    <% end %>
+  <% end %>
+</event-image-list>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expiration: 2017-12-29 23:22:45
+  level: 1
+  event: one
+  page: one
+  classification: 1
+
+two:
+  expiration: 2017-12-29 23:22:45
+  level: 1
+  event: two
+  page: two
+  classification: 1

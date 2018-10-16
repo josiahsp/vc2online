@@ -1,0 +1,14 @@
+<page-content>
+    <dashboard-block-list>
+        
+        <% @quickitems.each do |q| %>
+          <%= link_to q.path do %>
+            <dashboard-block-item class="block-3 hover-text-block">
+              <%= image_tag q.cover_image if q.cover_image.present? %>
+              <text><%= q.title %></text>
+            </dashboard-block-item>
+          <% end %>
+        <% end %>
+        
+      </dashboard-block-list>
+</page-content>

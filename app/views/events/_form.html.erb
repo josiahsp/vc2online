@@ -1,0 +1,237 @@
+<%= form_for(event, multipart: true) do |f| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<<<<<<< HEAD
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Subtitle</question>
+    <form-field>
+      <%= f.text_field :subtitle, :class => "full-width-field" %>
+    </form-field>
+    
+  <question>Synopsis<required-field /></question>
+    <form-field>
+      <%= f.text_field :synopsis, :class => "full-width-field", :placeholder => "Blurb shown when featured" %>
+    </form-field>
+
+  <question>Content<required-field /></question>
+    <form-field>
+      <%= f.text_area :content, :class => "full-width-area" %><br />
+      <span class="detail">&#94;Use <%= link_to "Markup Language", "https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet", :target => "_blank" %> for formatting</span>
+    </form-field>
+
+  <question>Location<required-field /></question>
+    <form-field>
+      <%= f.select(:location_id, @locations.collect { |campus| [campus.title, campus.id] },
+                                { selected: event.location_id,
+                                include_blank: 'Off-campus location (use fields below)'},
+                                { :class => "full-width-field" }) %>
+    </form-field>
+    
+  <question>Building Name</question>
+    <form-field>
+      <%= f.text_field :location_building, :class => "full-width-field", :placeholder => "Only if off-campus location" %>
+    </form-field>
+    
+  <question>Address</question>
+    <form-field>
+      <%= f.text_field :location_address, :class => "full-width-field", :placeholder => "Only if off-campus location" %>
+      <%= f.text_field :location_address2, :class => "full-width-field", :placeholder => "Only if off-campus location" %>
+    </form-field>
+
+  <question>City, State &amp; Zip</question>
+    <form-field>
+      <%= f.text_field :location_city, :class => "third-width-field", :placeholder => "City" %>
+      <%= f.text_field :location_state, :class => "third-width-field", :placeholder => "State" %>
+      <%= f.text_field :location_zip, :class => "third-width-field", :placeholder => "Zip" %>
+    </form-field>
+
+  <question>Google Maps ID</question>
+    <form-field>
+      <%= f.text_field :location_googlemapsid, :class => "full-width-field", :placeholder => "Found at developers.google.com/places/place-id - Only if off-campus location" %>
+    </form-field>
+
+    <hr />
+  
+  <question>Start Time/Date<required-field /></question>
+    <form-field>
+=======
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
+  </div>
+
+  <div class="field">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.select :location_id, @locations.collect { |campus| [campus.title, campus.id] },
+                                selected: event.location_id,
+                                include_blank: true %>
+    <br />- OR -<br />
+    <%= f.label :location_building %>
+    <%= f.text_field :location_building %>
+
+    <div class="field">
+      <%= f.label :location_address %>
+      <%= f.text_field :location_address %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_address2 %>
+      <%= f.text_field :location_address2 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_city %>
+      <%= f.text_field :location_city %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_state %>
+      <%= f.text_field :location_state %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_zip %>
+      <%= f.text_field :location_zip %>
+    </div>
+
+    <div class="field">
+      <%= f.label :location_Google_Maps_Place_ID %>
+      <%= f.text_field :location_googlemapsid %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :start %>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+    <%= f.datetime_select :start, :order => [:month, :day, :year],
+                                  :startyear => Date.today.year,
+                                  :startmonth => Date.today.month,
+                                  :startday => Date.today.day,
+                                  :starthour => Time.now.hour,
+                                  :default => 7.days.from_now,
+                                  :minute_step => 5,
+                                  :ampm => true,
+                                  :use_short_month => true
+                                  %>
+<<<<<<< HEAD
+    </form-field>
+=======
+  </div>
+
+  <div class="field">
+    <%= f.label :end, :title => "If no End date/time, make same as Start date/time." %>
+    <%= f.datetime_select :endtime, :order => [:month, :day, :year],
+                                :startyear => Date.today.year,
+                                :startmonth => Date.today.month,
+                                :startday => Date.today.day,
+                                :starthour => Time.now.hour,
+                                :default => 7.days.from_now + 2.hours,
+                                :minute_step => 5,
+                                :ampm => true,
+                                :use_short_month => true
+                                %>
+  </div>
+
+  <div class="field">
+    <%= f.label :videos %>
+    <%= f.text_field :videos_id, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :images %>
+    <%= f.text_field :images_id, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :links %>
+    <%= f.text_field :links_id, disabled: true %>
+  </div>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+
+  <question>End Time/Date<required-field /></question>
+    <form-field>
+    <%= f.datetime_select :endtime, :order => [:month, :day, :year],
+                                  :startyear => Date.today.year,
+                                  :startmonth => Date.today.month,
+                                  :startday => Date.today.day,
+                                  :starthour => Time.now.hour,
+                                  :default => 7.days.from_now,
+                                  :minute_step => 5,
+                                  :ampm => true,
+                                  :use_short_month => true
+                                  %><br />
+      <span class="detail">&#94;If no End date/time, make same as Start date/time</span>
+    <form-field><br /><br />
+    
+  <question>Price<required-field /></question>
+    <form-field>
+      $<%= f.text_field :price, default: "0.00" %>
+    </form-field>
+
+  <question>Slug<required-field /></question>
+    <form-field>
+      <%= f.text_field :slug, :class => "full-width-field", :placeholder => "Link name after \"events/\""%>
+    </form-field>
+    
+  <hr />
+  <question>Hero Image (1280x550)</question>
+    <form-field>
+      <%= f.file_field :hero_image %><br />
+      <%= image_tag @event.hero_image, :class => "thumb" if @event.hero_image.present? %>
+      <%= f.hidden_field :hero_image_cache %><br />
+    </form-field>
+    
+    <question>Hero Square Image (1080x1080)</question>
+    <form-field>
+      <%= f.file_field :hero_square_image %><br />
+      <%= image_tag @event.hero_square_image, :class => "thumb" if @event.hero_square_image.present? %>
+      <%= f.hidden_field :hero_square_image_cache %><br />
+    </form-field>
+      
+    <question>Cover Image (1280x810)</question>
+    <form-field>
+      <%= f.file_field :cover_image %><br />
+      <%= image_tag @event.cover_image, :class => "thumb" if @event.cover_image.present? %>
+      <%= f.hidden_field :cover_image_cache %><br />
+    </form-field>
+      
+    <question>Thumbnail Image (104x104)</question>
+    <form-field>
+      <%= f.file_field :thumbnail_image %><br />
+      <%= image_tag @event.thumbnail_image, :class => "thumb" if @event.thumbnail_image.present? %>
+      <%= f.hidden_field :thumbnail_image_cache %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

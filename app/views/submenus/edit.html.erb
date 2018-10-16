@@ -1,0 +1,8 @@
+<page-content>
+
+	<page-title>Editing Menu Category</page-title>
+
+	<%= render 'form', submenu: @submenu %>
+	<%= button_to 'Delete', @submenu, method: :delete, data: { confirm: 'Are you sure you want to delete this Menu Category? All child Menu Items will be deleted. This action cannot be undone.' }, :class => "secondary-button" %>
+
+</page-content>

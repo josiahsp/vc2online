@@ -1,0 +1,17 @@
+<header-spacer> </header-spacer>
+<page-content><narrow-page>
+
+<%= render partial: "info" %>
+
+<div class="block-1">
+
+<hr />
+  <h1>Contact</h1>
+
+  <%= render 'form', contact: @contact, disabled: true %>
+  <%= link_to :controller => :contacts, :action => :archive do %>
+    <%= button_to "Archive" %>
+  <% end %>
+</div>
+
+</narrow-page></page-content>

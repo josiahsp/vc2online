@@ -1,0 +1,112 @@
+<%= form_for(feature) do |f| %>
+  <% if feature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+
+      <ul>
+      <% feature.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<<<<<<< HEAD
+  <question>Object (Select One)<required-field /></question>
+    <form-field>
+      <%= f.select :event_id, @events.collect {|e| [e.title, e.id]},
+                                                { selected: @feature.event_id,
+                                                include_blank: "- Events -" },
+                                                { :class => "full-width-field" } %>
+      <%= f.select :page_id, @pages.collect {|p| [p.title, p.id]},
+                                                    { selected: @feature.page_id,
+                                                    include_blank: "- Pages -" },
+                                                    { :class => "full-width-field" } %>
+    </form-field>
+
+  <question>Start Date/Time<required-field /></question>
+    <form-field>
+      <%= f.datetime_select :start, {:order => [:month, :day, :year, :hour, :minute],
+=======
+  <div class="field">
+    <%= f.select :event_id, @events.collect {|e| [e.title, e.id]},
+                                              selected: @feature.event_id,
+                                              include_blank: true %> or 
+    <%= f.select :page_id, @pages.collect {|p| [p.title, p.id]},
+                                                  selected: @feature.page_id,
+                                                  include_blank: true  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start %>
+    <%= f.datetime_select :start, {:order => [:month, :day, :year, :hour, :minute],
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+                                      :minute_step => 5,
+                                      :ampm => true,
+                                      :use_short_month => true}
+                                      %>
+<<<<<<< HEAD
+    </form-field>
+
+  <question>Expiration<required-field /></question>
+    <form-field>
+      <%= f.datetime_select :endtime, {:order => [:month, :day, :year, :hour, :minute],
+=======
+  </div>
+
+  <div class="field">
+    <%= f.label :expires %>
+    <%= f.datetime_select :endtime, {:order => [:month, :day, :year, :hour, :minute],
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+                                          :minute_step => 5,
+                                          :ampm => true,
+                                          :use_short_month => true,
+                                          :default => Time.now + 3.weeks} %>
+<<<<<<< HEAD
+    </form-field>
+
+  <question>Caption<required-field /></question>
+    <form-field>
+      <%= f.text_area :caption %>
+    </form-field>
+  
+  <question>Priority Level<required-field /></question>
+    <form-field>
+      <%= f.select :level, (0..9) %>
+    </form-field>
+  
+  <question>Active Status</question>
+    <form-field>
+      <%= f.check_box :live, { checked: @feature.live } %><br />
+      <span class="detail">If within the activation and expiration times, unchecking this box will turn the feature off</span>
+    </form-field>
+=======
+  </div>
+
+  <div class="field">
+    <%= f.label :caption %>
+    <%= f.text_area :caption %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :priority_level %>
+    <%= f.select :level, (0..9) %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :active, title: "If within the activation and expiration times, unchecking this box will turn the feature off." %>
+    <%= f.check_box :live, { checked: @feature.live } %>
+  </div>
+>>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
+
+  <% if false   # Enable when adding intelligent feature serving based off first time, return visits and distance from campuses %>
+  <div class="field">
+    <%= f.label :classification %>
+    <%= f.number_field :classification %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

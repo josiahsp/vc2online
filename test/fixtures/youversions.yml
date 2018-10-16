@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  series: MyString
+  title: MyString
+  start: 2018-10-09 17:49:23
+  eventnumber: MyString
+
+two:
+  series: MyString
+  title: MyString
+  start: 2018-10-09 17:49:23
+  eventnumber: MyString

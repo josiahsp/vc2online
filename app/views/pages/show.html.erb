@@ -1,0 +1,11 @@
+<hero-image-section style="background-image: url('<%= @page.hero_image_url(:blur) %>');">
+    <%= image_tag @page.hero_image.main, :class => "hero-image" if @page.hero_image.main.present? %>
+</hero-image-section>
+
+<page-content>
+
+    <page-title><%= @page.title %></page-title><br />
+
+    <div id="page_body"><%= markdown(@page.content) %></div>
+
+</page-content>

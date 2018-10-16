@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <table bgcolor="#f55f55" style="width: 100%; text-align: center; font-family: helvetica; padding: 50px;">
+      <tr>
+        <td style="max-width: 600px; margin: auto; padding: 50px; text-align: left; background-color: #fcfcfc;">
+          <%= yield %>
+          <br /><br /><hr><br />
+          VC2 - <%= link_to "VC2online.com", "http://www.vc2online.com", :style => "text-decoration:inherit;color:inherit;" %><br />
+          Phone: <%= link_to "478-357-5193", "tel:14783575193", :style => "text-decoration:inherit;color:inherit;" %><br />
+          Email: <%= link_to "hello@vc2online.com", "mailto:hello@vc2online.com", :style => "text-decoration:inherit;color:inherit;" %><br />
+          Address: <%= link_to "320 N Main St. Tennille, GA 31089", "http://www.vc2online.com/locations/tennille-campus", :style => "text-decoration:inherit;color:inherit;" %><br />
+        </td></tr>
+        <tr><td style="margin: auto; text-align: center; font-size: 14px; padding: 20px;">
+          <%= link_to "Facebook", "http://www.facebook.com/vc2online", :style => "text-decoration:inherit;color:#fcfcfc;"  %> - 
+          <%= link_to "Instagram", "http://www.instagram.com/vc2online", :style => "text-decoration:inherit;color:#fcfcfc;"  %> - 
+          <%= link_to "YouTube", "http://www.youtube.com/vc2online", :style => "text-decoration:inherit;color:#fcfcfc;"  %> - 
+          <%= link_to "Twitter", "http://www.twitter.com/vc2online", :style => "text-decoration:inherit;color:#fcfcfc;"  %>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

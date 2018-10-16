@@ -1,0 +1,34 @@
+<%= form_for(image) do |f| %>
+  <% if image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Upload Image<required-field /></question>
+    <form-field>
+      <%= f.file_field :image %><br />
+      <%= image_tag @image.image, :class => "thumb" if @image.image.present? %>
+      <%= f.hidden_field :image_cache %><br />
+    </form-field>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+
+  <question>Caption</question>
+    <form-field>
+      <%= f.text_area :caption, :class => "full-width-area" %>
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

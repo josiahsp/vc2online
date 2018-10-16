@@ -1,0 +1,61 @@
+<%= form_for(collection) do |f| %>
+  <% if collection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+
+      <ul>
+      <% collection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <question>Title<required-field /></question>
+    <form-field>
+      <%= f.text_field :title, :class => "full-width-field" %>
+    </form-field>
+    
+  <question>Start Date<required-field /></question>
+    <form-field>
+      <%= f.date_select :startdate, {:order => [:month, :day, :year],
+                                      :use_short_month => true}
+                                      %>
+    </form-field>
+    
+  <question>End Date<required-field /></question>
+    <form-field>
+      <%= f.date_select :enddate, {:order => [:month, :day, :year],
+                                      :use_short_month => true}
+                                      %>
+    </form-field>
+
+  <question>Description<required-field /></question>
+    <form-field>
+      <%= f.text_area :description, :class => "full-width-area" %>
+    </form-field>
+
+  <question>Keywords<required-field /></question>
+    <form-field>
+      <%= f.text_area :keywords, :class => "full-width-area" %>
+    </form-field>
+    
+  <hr />
+  <question>Hero Image (1280x550)</question>
+    <form-field>
+      <%= f.file_field :hero_image %><br />
+      <%= image_tag @collection.hero_image, :class => "thumb" if @collection.hero_image.present? %>
+      <%= f.hidden_field :hero_image_cache %><br />
+    </form-field>
+    
+    <question>Artwork (1400x1400)</question>
+    <form-field>
+      <%= f.file_field :artwork %><br />
+      <%= image_tag @collection.artwork, :class => "thumb" if @collection.artwork.present? %>
+      <%= f.hidden_field :artwork_cache %><br />
+    </form-field>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<page-content>
+
+  <page-title>Multicasts</page-title>
+
+  <event-image-list>
+    <% @multicasts.each do |m| %>
+      <%= link_to multicast_path(m.id) do %>
+        <event-item class="block-3">
+          <%= image_tag m.cover_image %>
+        </event-item>
+      <% end %>
+    <% end %>
+  </event-image-list>  
+</page-content>
