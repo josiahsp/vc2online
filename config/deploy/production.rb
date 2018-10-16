@@ -31,9 +31,8 @@
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-role :app, %w{deploy@104.248.58.66}
-role :web, %w{deploy@104.248.58.66}
-role :db, %w{deploy@104.248.58.66}, :primary => true
+set :stage, :production
+server '104.248.58.66', user: 'deploy', roles: %w{web app db}
 set :branch, "master"
 set :rails_env, "staging"
 set :deploy_to, "/var/www/vc2online_staging"
