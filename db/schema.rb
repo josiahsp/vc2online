@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20181011195036) do
-=======
-ActiveRecord::Schema.define(version: 20171230194057) do
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,7 +108,6 @@ ActiveRecord::Schema.define(version: 20171230194057) do
     t.index ["page_id"], name: "index_features_on_page_id", using: :btree
   end
 
-<<<<<<< HEAD
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -152,8 +147,6 @@ ActiveRecord::Schema.define(version: 20171230194057) do
     t.string   "slug"
   end
 
-=======
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
   create_table "locations", force: :cascade do |t|
     t.string   "title"
     t.string   "building"
@@ -253,7 +246,6 @@ ActiveRecord::Schema.define(version: 20171230194057) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "submenus", force: :cascade do |t|
     t.string   "title"
     t.boolean  "mainmenu"
@@ -261,14 +253,11 @@ ActiveRecord::Schema.define(version: 20171230194057) do
     t.datetime "updated_at", null: false
   end
 
-=======
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
   create_table "youtubes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "youversions", force: :cascade do |t|
     t.string   "series"
     t.string   "title"
@@ -278,8 +267,6 @@ ActiveRecord::Schema.define(version: 20171230194057) do
     t.datetime "updated_at",  null: false
   end
 
-=======
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
   add_foreign_key "features", "events"
   add_foreign_key "features", "pages"
   add_foreign_key "meetings", "locations"
