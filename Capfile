@@ -37,3 +37,6 @@ install_plugin Capistrano::SCM::Git
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
+
+# Recommended by https://guides.rubyonrails.org/asset_pipeline.html#precompiling-assets
+	load 'deploy/assets'
