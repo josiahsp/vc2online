@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-<<<<<<< HEAD
 # File uploading
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-processing'
@@ -27,9 +26,6 @@ gem 'devise'
 
 # Vanity URLs
 gem 'friendly_id', '~> 5.1.0'
-=======
-gem "feedjira"
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
@@ -57,9 +53,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano', group: :development
+# Use Capistrano
+gem 'capistrano-rvm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
