@@ -1,21 +1,12 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  resources :quickitems
-  resources :youversions
+
   get 'prayers/index'
-=======
-  resources :features
-  resources :events
-  resources :services
   get 'services/index'
->>>>>>> be4d248d05bb7a93b47eccdce1d4c49a57e15414
-
   get 'prayers/new'
-
   get 'prayers/update'
 
   devise_for :admins
-  resources :features, :services, :meetings, :locations, :pages, :events, :images, :kioskitems, :menuitems, :submenus, :prayers, :multicasts, :collections, :links
+  resources :features, :services, :meetings, :locations, :pages, :events, :images, :kioskitems, :menuitems, :submenus, :prayers, :multicasts, :collections, :links, :quickitems, :youversions
   resources :contacts do
     get 'archive', on: :member
   end
