@@ -17,7 +17,6 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.datetime :end
       t.references :videos
       t.references :images
-      t.references :links
       t.float :price
 
       t.timestamps
