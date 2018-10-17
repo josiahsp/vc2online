@@ -12,6 +12,8 @@ module Vc2online
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     
+    config.assets.initialize_on_precompile = false
+    
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local # Or :utc
     config.active_record.time_zone_aware_types = [:datetime, :time]
@@ -20,7 +22,5 @@ module Vc2online
     
     
     config.logger = ActiveSupport::Logger.new(STDOUT)
-    
-    config.assets.initialize_on_precompile = false
   end
 end
