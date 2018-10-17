@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20181011195036) do
     t.datetime "endtime"
     t.integer  "videos_id"
     t.integer  "images_id"
-#   t.integer  "links_id"
+    t.integer  "links_id"
     t.float    "price"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20181011195036) do
     t.string   "thumbnail_image"
     t.string   "slug"
     t.index ["images_id"], name: "index_events_on_images_id", using: :btree
-#   t.index ["links_id"], name: "index_events_on_links_id", using: :btree
+    t.index ["links_id"], name: "index_events_on_links_id", using: :btree
     t.index ["location_id"], name: "index_events_on_location_id", using: :btree
     t.index ["videos_id"], name: "index_events_on_videos_id", using: :btree
   end
