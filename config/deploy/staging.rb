@@ -31,7 +31,7 @@
 # Feel free to add new variables to customise your setup.
 
 set :stage, :production
-server '104.248.58.66', user: 'deploy', roles: %w{web app db}
+server '127.0.0.1', user: 'deploy', roles: %w{web app db}
 set :branch, "master"
 set :rails_env, "staging"
 set :deploy_to, "/var/www/vc2online_staging"
