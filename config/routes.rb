@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get '/kiosk', to: 'kioskitems#index'
   get 'podcast.rss', to: 'multicasts#podcast'
   
-  Link.all.each do |link|
-    get "/#{link.slug}", to: 'links#show', :id => link.id
-  end
+#  Link.all.each do |link|
+#    get "/#{link.slug}", to: 'links#show', :id => link.id
+#  end
   
 end
